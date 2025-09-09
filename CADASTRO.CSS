@@ -1,0 +1,193 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background: #fff0f5;
+    color: #4b1f1f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* BANNER */
+  .banner {
+    position: relative;
+    width: 100%;
+    height: 250px; /* altura do cabeçalho */
+    overflow: hidden;
+  }
+  
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* cobre todo o espaço sem deformar */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  
+  .banner nav {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 40px;
+  }
+  
+  .nav-link {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  
+  .nav-link:hover {
+    color: #ffd6d6;
+  }
+  
+  .logo-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 8px #00000088;
+    z-index: 1;
+  }
+  
+  /* PRODUTOS */
+  .produtos {
+    text-align: center;
+    padding: 30px 20px;
+  }
+  
+  .produtos h2 {
+    color: #b34747;
+    margin-bottom: 20px;
+  }
+  
+  .grid-produtos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .produto-card {
+    background: #fff0f5;
+    padding: 15px;
+    border-radius: 15px;
+    width: 220px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  
+  .produto-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .produto-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .produto-card h3 {
+    margin-bottom: 5px;
+  }
+  
+  .produto-card p {
+    margin-bottom: 8px;
+  }
+  
+  .produto-card .preco {
+    font-weight: bold;
+    color: #b34747;
+  }
+  
+  /* CADASTRO */
+  .cadastro {
+    padding: 30px 20px;
+    text-align: center;
+  }
+  
+  .cadastro h2 {
+    margin-bottom: 20px;
+    color: #b34747;
+  }
+  
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .formulario input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #e6bfbf;
+    font-size: 1rem;
+  }
+  
+  .formulario input:focus {
+    border-color: #b34747;
+    outline: none;
+  }
+  
+  .formulario button {
+    padding: 12px;
+    background: #b34747;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .formulario button:hover {
+    background: #872f2f;
+  }
+  
+  /* Mensagem de CEP */
+  #resposta {
+    color: #b34747;
+    font-style: italic;
+    min-height: 18px;
+  }
+  
+  /* RESPONSIVIDADE */
+  @media (max-width: 768px) {
+    .grid-produtos {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .banner nav {
+      justify-content: center;
+      padding: 15px 0;
+    }
+  
+    .logo-text {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .formulario {
+      width: 90%;
+    }
+  }
+  

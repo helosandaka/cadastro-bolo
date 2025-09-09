@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doce Sabor - Cadastro</title>
+  <link rel="stylesheet" href="CADASTRO.CSS">
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const resposta = document.getElementById("resposta");
+
+      window.pesquisaCEP = function() {
+        const cep = document.getElementById("cep").value.replace(/\D/g,'');
+        const validacep = /^[0-9]{8}$/;
+        resposta.textContent = '';
+
+        if(validacep.test(cep)) {
+          const script = document.createElement('script');
+          script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=preencherCEP';
+          document.body.appendChild(script);
+        } else {
+          resposta.textContent = 'CEP inválido';
+        }
+      };
+
+      window.preencherCEP = function(conteudo) {
+        if("erro" in conteudo) {
+          resposta.textContent = "CEP não encontrado!";
+        } else {
+          document.getElementById('rua').value = conteudo.logradouro;
+          document.getElementById('bairro').value = conteudo.bairro;
+          document.getElementById('cidade').value = conteudo.localidade;
+          document.getElementById('estado').value = conteudo.uf;
+          resposta.textContent = '';
+        }
+      }
+    });
+  </script>
+</head>
+<body>
+  <!-- Banner -->
+  <header class="banner">
+    <img src="https://panicenter.com.br/cardapio/uploads/produtos/imagem/0p86X_NCuq081ef.jpg" alt="Doce Sabor" class="banner-img">
+    <nav>
+      <a href="index.html" class="nav-link">Loja</a>
+      <a href="cadastro.html" class="nav-link">Cadastro</a>
+    </nav>
+    <h1 class="logo-text">Doce Sabor</h1>
+  </header>
+
+  <!-- Cadastro Simples -->
+  <section class="cadastro">
+    <h2>Cadastro de Cliente</h2>
+    <form class="formulario">
+      <input type="text" placeholder="Nome completo" required>
+      <input type="text" placeholder="CPF" pattern="\d{11}" required>
+      <input type="email" placeholder="E-mail" required>
+      <input type="password" placeholder="Senha" required>
+      <input type="tel" placeholder="Telefone">
+      <input type="text" id="cep" placeholder="CEP" onblur="pesquisaCEP();">
+      <input type="text" id="rua" placeholder="Rua">
+      <input type="text" id="numero" placeholder="Número">
+      <input type="text" id="bairro" placeholder="Bairro">
+      <input type="text" id="cidade" placeholder="Cidade">
+      <input type="text" id="estado" placeholder="Estado">
+      <p id="resposta"></p>
+      <button type="submit">Cadastrar</button>
+    </form>
+  </section>
+</body>
+</html>
